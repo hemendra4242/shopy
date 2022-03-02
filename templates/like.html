@@ -1,0 +1,5 @@
+{% load static %}
+<form action="{% url 'product' product.Title %}" method="POST">
+{% csrf_token %}
+<button type="submit" name="product_id" value="{{ product.id }}", class="btn btn-primary btn-sm"   style="border-radius: 20px;"><img src="{% static 'like.png' %}" width='20' height='20'></button>
+</form>

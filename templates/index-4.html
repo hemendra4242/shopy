@@ -1,0 +1,355 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- molla/index-4.html  22 Nov 2019 09:53:08 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cheaptechguys</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Molla - Bootstrap eCommerce Template">
+    <meta name="author" content="p-themes">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/images/icons/nn.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/icons/nn.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/icons/nn.png' %}">
+    <link rel="manifest" href="{% static 'assets/images/icons/site.html' %}">
+    <link rel="mask-icon" href="{% static 'assets/images/icons/safari-pinned-tab.' %}'" color="#666666">
+    <link rel="shortcut icon" href="{% static 'assets/images/icons/nn.png' %}">
+    <meta name="apple-mobile-web-app-title" content="Molla">
+    <meta name="application-name" content="Molla">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="msapplication-config" content="{% static 'assets/images/icons/browserconfig.xml' %}">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="{% static 'assets/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css' %}">
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl-carousel/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/magnific-popup/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/jquery.countdown.css' %}">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Open+Sans">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'hemendra.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/skins/skin-demo-4.css' %">
+    <link rel="stylesheet" href="{% static 'assets/css/demos/demo-4.css' %}">
+</head>
+<body>
+    <div class="page-wrapper">
+        {% include 'navbar.html' %}
+        <main class="main">
+            <div class="intro-slider-container mb-5">
+                <div class="intro-slider owl-carousel owl-theme owl-nav-inside owl-light" data-toggle="owl" 
+                    data-owl-options='{
+                        "dots": true,
+                        "nav": false,
+                        "responsive": {
+                            "1200": {
+                                "nav": true,
+                                "dots": false
+                            }
+                        }
+                    }'>
+                    {% for product in offer %}
+                    <div class="intro-slide" style="background-image: url({{ product.Image1.url }});">
+                        <div class="container intro-content">
+                            <div class="row justify-content-end">
+                                <div class="col-auto col-sm-7 col-md-6 col-lg-5">
+                                    <h3 class="intro-subtitle text-third"></h3><!-- End .h3 intro-subtitle -->
+                                    <h1 class="intro-title" style="color:DodgerBlue;">{{ product.discount }}% off</h1>
+                                    <h1 class="intro-title" style="color:DodgerBlue;">{{ product.Title }}</h1><!-- End .intro-title -->
+
+                                    <div class="intro-price">
+                                        <sup class="intro-old-price" style="color:blue;">{{ product.Before_price }}</sup>
+                                        <span class="text-third">
+                                            <sup style="color:blue;">{{ product.After_price }}</sup>
+                                            <a href="{% url 'product' product.Title %}"><button type='submit' class="btn btn-primary">shop</button></a>
+                                        </span>
+                                    </div><!-- End .intro-price -->
+
+
+                                </div><!-- End .col-lg-11 offset-lg-1 -->
+                            </div><!-- End .row -->
+                        </div><!-- End .intro-content -->
+                    </div><!-- End .intro-slide -->
+                    {% endfor %}
+                    <div class="intro-slide" style="background-image: url({% static 'assets/images/demos/demo-4/slider/slide-2.png' %});">
+                        <div class="container intro-content">
+                            <div class="row justify-content-end">
+                                <div class="col-auto col-sm-7 col-md-6 col-lg-5">
+                                    <h3 class="intro-subtitle text-primary">Best Tech Accessories</h3><!-- End .h3 intro-subtitle -->
+                                    <h1 class="intro-title">From various shopping sites</h1><!-- End .intro-title -->
+
+                                    <div class="intro-price">
+                                        <sup></sup>
+                                        <span class="text-primary">
+                                            <sup></sup>
+                                        </span>
+                                    </div><!-- End .intro-price -->
+
+
+                                </div><!-- End .col-md-6 offset-md-6 -->
+                            </div><!-- End .row -->
+                        </div><!-- End .intro-content -->
+                    </div><!-- End .intro-slide -->
+                </div><!-- End .intro-slider owl-carousel owl-simple -->
+
+                <span class="slider-loader"></span><!-- End .slider-loader -->
+            </div><!-- End .intro-slider-container -->
+
+            <div class="container">
+                <h2 class="title text-center mb-4">Explore Popular Categories</h2><!-- End .title text-center -->
+                <div class="cat-blocks-container">
+                    <div class="row">
+                        <div class="col-6 col-sm-4 col-lg-2">
+                            <a href="{% url 'categorylist' 'Laptops' %}" class="cat-block">
+                                <figure>
+                                    <span>
+                                        <img src="{% static 'assets/images/demos/demo-4/cats/1.png' %}" alt="Category image">
+                                    </span>
+                                </figure>
+
+                                <h3 class="cat-block-title">Laptops</h3><!-- End .cat-block-title -->
+                            </a>
+                        </div><!-- End .col-sm-4 col-lg-2 -->
+
+                        <div class="col-6 col-sm-4 col-lg-2">
+                            <a href="{% url 'categorylist' 'Camera' %}" class="cat-block">
+                                <figure>
+                                    <span>
+                                        <img src="{% static 'assets/images/demos/demo-4/cats/2.png' %}" alt="Category image">
+                                    </span>
+                                </figure>
+
+                                <h3 class="cat-block-title">Digital Cameras</h3><!-- End .cat-block-title -->
+                            </a>
+                        </div><!-- End .col-sm-4 col-lg-2 -->
+
+                        <div class="col-6 col-sm-4 col-lg-2">
+                            <a href="{% url 'categorylist' 'Smart Phone' %}" class="cat-block">
+                                <figure>
+                                    <span>
+                                        <img src="{% static 'assets/images/demos/demo-4/cats/3.png' %}" alt="Category image">
+                                    </span>
+                                </figure>
+
+                                <h3 class="cat-block-title">Smart Phones</h3><!-- End .cat-block-title -->
+                            </a>
+                        </div><!-- End .col-sm-4 col-lg-2 -->
+
+                        <div class="col-6 col-sm-4 col-lg-2">
+                            <a href="{% url 'categorylist' 'TV' %}" class="cat-block">
+                                <figure>
+                                    <span>
+                                        <img src="{% static 'assets/images/demos/demo-4/cats/4.png' %}" alt="Category image">
+                                    </span>
+                                </figure>
+
+                                <h3 class="cat-block-title">Televisions</h3><!-- End .cat-block-title -->
+                            </a>
+                        </div><!-- End .col-sm-4 col-lg-2 -->
+
+                        <div class="col-6 col-sm-4 col-lg-2">
+                            <a href="{% url 'categorylist' 'Smart Speakers' %}" class="cat-block">
+                                <figure>
+                                    <span>
+                                        <img src="{% static 'assets/images/demos/demo-4/cats/5.png' %}" alt="Category image">
+                                    </span>
+                                </figure>
+
+                                <h3 class="cat-block-title">Audio</h3><!-- End .cat-block-title -->
+                            </a>
+                        </div><!-- End .col-sm-4 col-lg-2 -->
+
+                        <div class="col-6 col-sm-4 col-lg-2">
+                            <a href="{% url 'categorylist' 'Smart Watch' %}" class="cat-block">
+                                <figure>
+                                    <span>
+                                        <img src="{% static 'assets/images/demos/demo-4/cats/6.png' %}" alt="Category image">
+                                    </span>
+                                </figure>
+
+                                <h3 class="cat-block-title">Smart Watches</h3><!-- End .cat-block-title -->
+                            </a>
+                        </div><!-- End .col-sm-4 col-lg-2 -->
+                    </div><!-- End .row -->
+                </div><!-- End .cat-blocks-container -->
+            </div><!-- End .container -->
+
+            <div class="mb-4"></div><!-- End .mb-4 -->
+
+
+            <div class="mb-3"></div><!-- End .mb-5 -->
+
+
+
+            <div class="mb-6"></div><!-- End .mb-6 -->
+
+
+
+
+
+            <div class="mb-5"></div><!-- End .mb-5 -->
+
+
+
+            <div class="mb-4"></div><!-- End .mb-4 -->
+            <div class="container for-you">
+            <div class="heading heading-flex mb-3">
+                    <div class="heading-left">
+                        <h2 class="title">Today's deals</h2><!-- End .title -->
+                    </div><!-- End .heading-left -->
+            </div><!-- End .heading -->
+
+            </div>
+            <div class="container">
+                <hr class="mb-0">
+            </div><!-- End .container -->
+
+            <div class="icon-boxes-container bg-transparent">
+            {% if products %}
+            {% for product in products %}
+<style>
+
+body {
+  background: #00b09b;
+  background: -webkit-linear-gradient(to right, #00b09b, #96c93d);
+  background: linear-gradient(to right, #00b09b, #96c93d);
+  min-height: 100vh;
+}
+
+.text-gray {
+  color: #aaa;
+}
+</style>
+<div class="container py-5">
+
+  <!-- For demo purpose -->
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <ul class="list-group shadow">
+        <!-- list group item -->
+        <li class="list-group-item" style="border-radius:10px;">
+          <!-- Custom content-->
+          <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+            <div class="media-body order-2 order-lg-1">
+              <h5 class="mt-0 font-weight-bold mb-2"><a href='{% url "product" product.Title %}'>{{ product.Title|truncatewords:5 }}</a></h5>
+              <div class="rating-star">
+                                &nbsp;
+								<span>
+									<i class="fa fa-star{% if product.ratings == 0.5 %}-half-o{% elif product.ratings < 1 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if product.ratings == 1.5 %}-half-o{% elif product.ratings < 2 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if product.ratings == 2.5 %}-half-o{% elif product.ratings < 3 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if product.ratings == 3.5 %}-half-o{% elif product.ratings < 4 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if product.ratings == 4.5 %}-half-o{% elif product.ratings < 5 %}-o {% endif %}" aria-hidden="true"></i>
+								</span>
+								<p>({{ product.ratings }}/5)</p>
+				</div>&nbsp;&nbsp;
+                <div>
+                <a href='{{ product.Buy_link }}'><button class='btn btn-primary'>Buy</button></a>
+                </div>
+              <p class="font-italic text-muted mb-0 small">{{ product.Specialfeatures }}</p>
+              <div class="d-flex align-items-center justify-content-between mt-1">
+                <h6 class="font-weight-bold my-2">{{ product.After_price }}</h6>
+                <h6 class="font-weight-bold my-2">{{ product.Dateofpublished|date:'F, jS, Y' }}</h6>
+              </div>
+            </div><img src="{{ product.Image1.url }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+          </div>
+          <!-- End -->
+        </li>
+        <!-- End -->
+
+      </ul>
+      <!-- End -->
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+{% endif %}
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="icon-box icon-box-side">
+                                <span class="icon-box-icon text-dark">
+                                    <i class="icon-rocket"></i>
+                                </span>
+                                <div class="icon-box-content">
+                                    <h3 class="icon-box-title">Best Product Listing</h3><!-- End .icon-box-title -->
+                                    <p>content uploaded by every 24 hours.</p>
+                                </div><!-- End .icon-box-content -->
+                            </div><!-- End .icon-box -->
+                        </div><!-- End .col-sm-6 col-lg-3 -->
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="icon-box icon-box-side">
+                                <span class="icon-box-icon text-dark">
+                                    <i class="icon-rotate-left"></i>
+                                </span>
+
+                                <div class="icon-box-content">
+                                    <h3 class="icon-box-title">Cheap items</h3><!-- End .icon-box-title -->
+                                    <p>listed from various sites</p>
+                                </div><!-- End .icon-box-content -->
+                            </div><!-- End .icon-box -->
+                        </div><!-- End .col-sm-6 col-lg-3 -->
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="icon-box icon-box-side">
+                                <span class="icon-box-icon text-dark">
+                                    <i class="icon-info-circle"></i>
+                                </span>
+
+                                <div class="icon-box-content">
+                                    <h3 class="icon-box-title">Best budget Electronics</h3><!-- End .icon-box-title -->
+                                    <p>various sites</p>
+                                </div><!-- End .icon-box-content -->
+                            </div><!-- End .icon-box -->
+                        </div><!-- End .col-sm-6 col-lg-3 -->
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="icon-box icon-box-side">
+                                <span class="icon-box-icon text-dark">
+                                    <i class="icon-life-ring"></i>
+                                </span>
+
+                                <div class="icon-box-content">
+                                    <h3 class="icon-box-title">Your wish our content</h3><!-- End .icon-box-title -->
+                                    <p>24/7 amazing services</p>
+                                </div><!-- End .icon-box-content -->
+                            </div><!-- End .icon-box -->
+                        </div><!-- End .col-sm-6 col-lg-3 -->
+                    </div><!-- End .row -->
+                </div><!-- End .container -->
+            </div><!-- End .icon-boxes-container -->
+        </main><!-- End .main -->
+        {% include 'footer.html' %}
+    </div><!-- End .page-wrapper -->
+    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+    <!-- Plugins JS File -->
+    {% include 'mobnav.html' %}
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.hoverIntent.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/superfish.min.js' %}"></script>
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap-input-spinner.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.plugin.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
+    <!-- Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/demos/demo-4.js' %}"></script>
+</body>
+<!-- molla/index-4.html  22 Nov 2019 09:54:18 GMT -->
+</html>

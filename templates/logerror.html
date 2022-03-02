@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funny - Page Not Found 1</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+        body {
+            background: #101820FF ;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            margin: auto;
+            width: 100%;
+            padding-top: 25vh;
+            align-items: center;
+            /* background: #4f4e4e1c; */
+            color: #FEE715FF
+        }
+
+        h3,
+        h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+            margin-top: 0px;
+            text-align: center;
+            user-select: none;
+            /* Standard */
+        }
+
+        hr {
+            width: 65%;
+        }
+
+        p:nth-last-child(2) {
+            font-size: 18px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-bottom: 0;
+            user-select: none;
+            /* Standard */
+            text-align: center;
+        }
+
+        p:last-child {
+            font-size: 18px;
+            font-family: Arial, Helvetica, sans-serif;
+            user-select: none;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        p span a {
+            text-decoration: none;
+            color: #0000ff8f;
+        }
+
+        p span a:hover {
+            color: #575151;
+        }
+
+        @media screen and (max-width:1200px) {
+            img {
+            width: 450px;
+            margin: 10px;
+        }
+        }
+        @media screen and (max-width:1200px) {
+            img {
+            width: 400px;
+            margin: 10px;
+        }
+        h3,
+        h2 {
+            font-size: 20px;
+        }
+        }
+
+        @media screen and (max-width:800px) {
+            .container{flex-direction: column;
+            padding-top: 5vh;}
+            h3,
+        h2 {
+            font-size: 30px;
+        }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="{% static 'sad-face-emogi.png' %}" alt="women crying">
+        <div class="text-contents">
+            <h3>SORRY!!!</h3>
+            <hr>
+            <p>{{ error }}</p>
+            <p><span><a href="#">Click here</a> </span> to redirect to the homepage.</p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

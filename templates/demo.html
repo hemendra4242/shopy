@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- molla/category-4cols.html  22 Nov 2019 10:02:52 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cheaptechguys</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Molla - Bootstrap eCommerce Template">
+    <meta name="author" content="p-themes">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/images/icons/nn.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/icons/nn.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/icons/nn.png' %}">
+    <link rel="manifest" href="{% static 'assets/images/icons/site.html' %}">
+    <link rel="mask-icon" href="{% static 'assets/images/icons/safari-pinned-tab.svg' %}" color="#666666">
+    <link rel="shortcut icon" href="{% static 'assets/images/icons/nn.png' %}">
+    <meta name="apple-mobile-web-app-title" content="Molla">
+    <meta name="application-name" content="Molla">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="msapplication-config" content="{% static 'assets/images/icons/browserconfig.xml' %}">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'custom.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl-carousel/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/magnific-popup/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider/nouislider.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+        <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
+</head>
+<style>
+/* Pagination links */
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+/* Style the active/current link */
+.pagination a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+/* Add a grey background color on mouse-over */
+.pagination a:hover:not(.active) {background-color: #ddd;}
+</style>
+<body>
+    <div class="page-wrapper">
+        {% include 'navbar.html' %}
+        <main class="main">
+        	<div class="page-header text-center" style="background-image: url({% static 'll.jpg' %})">
+        		<div class="container">
+        			<h1 class="page-title">Category<span><h1  style="color:black;">{{ choice|title }}</h1></span></h1>
+        		</div><!-- End .container -->
+        	</div><!-- End .page-header -->
+            <div class="container mt-5 mb-5">
+            <div class="d-flex justify-content-center row">
+        {% for product in Products %}
+        <div class="products mb-3">
+                                <div class="product product-list">
+                                    <div class="row">
+                                        <div class="col-6 col-lg-3">
+                                            <figure class="product-media">
+                                                <span class="product-label label-new">{{ product.discount }}% off</span>
+                                                <a href="{{ product.get_absolute_url }}">
+                                                    <img src="{{ product.Image1.url }}" alt="Product image" class="product-image">
+                                                </a>
+                                            </figure><!-- End .product-media -->
+                                        </div><!-- End .col-sm-6 col-lg-3 -->
+
+                                        <div class="col-6 col-lg-3 order-lg-last">
+                                            <div class="product-list-action">
+                                                <div class="product-price">
+                                                    {{ product.After_price }}
+                                                </div><!-- End .product-price -->
+                                            <div class="rating-star">
+								                   <span>
+									                <i class="fa fa-star{% if product.ratings == 0.5 %}-half-o{% elif product.ratings < 1 %}-o {% endif %}" aria-hidden="true"></i>
+									                <i class="fa fa-star{% if product.ratings == 1.5 %}-half-o{% elif product.ratings < 2 %}-o {% endif %}" aria-hidden="true"></i>
+									                <i class="fa fa-star{% if product.ratings == 2.5 %}-half-o{% elif product.ratings < 3 %}-o {% endif %}" aria-hidden="true"></i>
+									                <i class="fa fa-star{% if product.ratings == 3.5 %}-half-o{% elif product.ratings < 4 %}-o {% endif %}" aria-hidden="true"></i>
+									                <i class="fa fa-star{% if product.ratings == 4.5 %}-half-o{% elif product.ratings < 5 %}-o {% endif %}" aria-hidden="true"></i>
+								                    </span>
+								                    <p>({{ product.ratings }}/5)
+							                </div>
+
+                                                <div class="product-action">
+                                                    <a href="{{ product.get_absolute_url }}" class="btn-product btn-quickview" title="Quick view"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quick view</span></a>
+                                                </div><!-- End .product-action -->
+
+                                                <a href="{{ product.Buy_link }}" class="btn-product btn-cart"><span>buy</span></a>
+                                            </div><!-- End .product-list-action -->
+                                        </div><!-- End .col-sm-6 col-lg-3 -->
+
+                                        <div class="col-lg-6">
+                                            <div class="product-body product-action-inner">
+                                                <div class="product-cat">
+                                                    <a>&nbsp;{{ product.choice }}</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title"><a href="{{ product.get_absolute_url }}">&nbsp;{{ product.Title|truncatewords:5 }}&nbsp;</a></h3><!-- End .product-title -->
+
+                                                <div class="product-content">
+                                                    <p>&nbsp;{{ product.Specialfeatures|truncatewords:15 }}</p>
+                                                </div><!-- End .product-content -->
+
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a href="#" class="active">
+                                                        <img src="{{ product.Image2.url }}" alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="{{ product.Image2.url }}" alt="product desc">
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <img src="{{ product.Image3.url }}" alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .col-lg-6 -->
+                                    </div><!-- End .row -->
+                                </div><!-- End .product -->
+                    </div>
+{% endfor %}
+</div>
+<div class="pagination">
+  {% if Products.has_previous %}
+    <a href="?page={{Products.previous_page_number}}">&laquo;</a>
+  {% endif %}
+  <a class="active" href="#">{{ Products.number }}</a>
+  {% if Products.has_next %}
+    <a href="?page={{Products.next_page_number}}">&raquo;</a>
+  {% endif %}
+  </ul>
+</nav>
+    </div>
+
+
+        </main><!-- End .main -->
+        {% include 'footer.html' %}
+    </div><!-- End .page-wrapper -->
+    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+    {% include 'mobnav.html' %}
+    <!-- Plugins JS File -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.hoverIntent.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/superfish.min.js' %}"></script>
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/js/wNumb.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap-input-spinner.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'assets/js/nouislider.min.js' %}"></script>
+    <!-- Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+
+
+<!-- molla/category-4cols.html  22 Nov 2019 10:02:55 GMT -->
+</html>

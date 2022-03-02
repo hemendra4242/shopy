@@ -1,0 +1,498 @@
+{% load static %}
+{% load crispy_forms_filters %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- molla/product.html  22 Nov 2019 09:54:50 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cheaptechguys</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Molla - Bootstrap eCommerce Template">
+    <meta name="author" content="p-themes">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/images/icons/nn.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/icons/nn.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/icons/nn.png' %}">
+    <link rel="manifest" href="{% static 'assets/images/icons/site.html' %}">
+    <link rel="mask-icon" href="{% static 'assets/images/icons/safari-pinned-tab.svg' %}" color="#666666">
+    <link rel="shortcut icon" href="{% static 'assets/images/icons/nn.png' %}">
+    <meta name="apple-mobile-web-app-title" content="Molla">
+    <meta name="application-name" content="Molla">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="msapplication-config" content="{% static 'assets/images/icons/browserconfig.xml' %}">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl-carousel/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/magnific-popup/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'jsl' %}">
+    <link rel="stylesheet" href="{% static 'cssl' %}">
+
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'custom.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider/nouislider.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<style>
+body {
+    background-color: #eee
+}
+
+.bdge {
+    height: 21px;
+    background-color: orange;
+    color: #fff;
+    font-size: 11px;
+    padding: 8px;
+    border-radius: 4px;
+    line-height: 3px
+}
+
+.comments {
+    text-decoration: underline;
+    text-underline-position: under;
+    cursor: pointer
+}
+
+.dot {
+    height: 7px;
+    width: 7px;
+    margin-top: 3px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block
+}
+
+.hit-voting:hover {
+    color: blue
+}
+
+.hit-voting {
+    cursor: pointer
+}
+</style>
+<body>
+    <div class="page-wrapper">
+    {% include 'navbar.html' %}
+        <main class="main">
+            <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
+                <div class="container d-flex align-items-center">
+                </div><!-- End .container -->
+            </nav><!-- End .breadcrumb-nav -->
+            <div class="page-content">
+                <div class="container">
+                    <div class="product-details-top">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="product-gallery product-gallery-vertical">
+                                    <div class="row">
+                                        <figure class="product-main-image">
+                                            <img id="product-zoom" src="{{ product.Image1.url }}" data-zoom-image="{{ product.Image1.url }}" alt="product image">
+
+                                            <a href="#" id="btn-product-gallery" class="btn-product-gallery">
+                                                <i class="icon-arrows"></i>
+                                            </a>
+                                        </figure><!-- End .product-main-image -->
+
+                                        <div id="product-zoom-gallery" class="product-image-gallery">
+                                            <a class="product-gallery-item active" href="#" data-image="{{ product.Image1.url }}" data-zoom-image="{{ product.Image1.url }}">
+                                                <img src="{{ product.Image1.url }}" alt="product side">
+                                            </a>
+                                            <a class="product-gallery-item active" href="#" data-image="{{ product.Image2.url }}" data-zoom-image="{{ product.Image2.url }}">
+                                                <img src="{{ product.Image2.url }}" alt="product side">
+                                            </a>
+
+                                            <a class="product-gallery-item" href="#" data-image="{{ product.Image3.url }}" data-zoom-image="{{ product.Image3.url }}">
+                                                <img src="{{ product.Image3.url }}" alt="product cross">
+                                            </a>
+
+                                            <a class="product-gallery-item" href="#" data-image="{{ product.Image4.url }}" data-zoom-image="{{ product.Image4.url }}">
+                                                <img src="{{ product.Image4.url }}" alt="product with model">
+                                            </a>
+
+                                            <a class="product-gallery-item" href="#" data-image="{{ product.Image5.url }}" data-zoom-image="{{ product.Image5.url }}">
+                                                <img src="{{ product.Image5.url }}" alt="product back">
+                                            </a>
+                                        </div><!-- End .product-image-gallery -->
+                                    </div><!-- End .row -->
+                                </div><!-- End .product-gallery -->
+                            </div><!-- End .col-md-6 -->
+
+                            <div class="col-md-6">
+                                <div class="product-details">
+                                    <h1 class="product-title">{{ product.Title }}</h1><!-- End .product-title -->
+
+                                    <div class="product-price">
+                                        {{ product.After_price }}
+                                    </div><!-- End .product-price -->
+                                    <div class="product-price">
+                                        <del>{{ product.Before_price }}</del>
+                                    </div><!-- End .product-price -->
+                                    <div class="product-content">
+                                        <p>({{ product.Specialfeatures }}) and many more features...</p>
+                                    </div><!-- End .product-content -->
+
+                                    <div class="details-filter-row details-row-size">
+                                        <label>Color:</label>
+
+                                        <div class="product-nav product-nav-thumbs">
+                                        {% if product.Colour == 'Red' %}
+                                            <a href="#" class="active">
+                                                <img src="{% static 'img.png' %}" alt="product desc">
+                                            </a>
+                                        {% endif %}
+                                        {% if product.Colour == 'White' %}
+                                            <a href="#" class="active">
+                                                <img src="{% static 'img_2.png' %}" alt="product desc">
+                                            </a>
+                                        {% endif %}
+                                        {% if product.Colour == 'Blue' %}
+                                            <a href="#" class="active">
+                                                <img src="{% static 'img_1.png' %}" alt="product desc">
+                                            </a>
+                                        {% endif %}
+                                        {% if product.Colour == 'Brown' %}
+                                            <a href="#" class="active">
+                                                <img src="{% static 'img_3.png' %}" alt="product desc">
+                                            </a>
+                                        {% endif %}
+                                        {% if product.Colour == 'Pink' %}
+                                            <a href="#" class="active">
+                                                <img src="{% static 'img_4.png' %}" alt="product desc">
+                                            </a>
+                                        {% endif %}
+                                        {% if product.Colour == 'Green' %}
+                                            <a href="#" class="active">
+                                                <img src="{% static 'img_5.png' %}" alt="product desc">
+                                            </a>
+                                        {% endif %}
+                                        {% if product.Colour == 'Sky Blue' %}
+                                            <a href="#" class="active">
+                                                <img src="{% static 'img_6.png' %}" alt="product desc">
+                                            </a>
+                                        {% endif %}
+                                        {% if product.Colour == 'Yellow' %}
+                                            <a href="#" class="active">
+                                                <img src="{% static 'img_7.png' %}" alt="product desc">
+                                            </a>
+                                        {% endif %}
+                                        {% if product.Colour == 'Black' %}
+                                            <a href="#" class="active">
+                                                <img src="{% static 'img_8.png' %}" alt="product desc">
+                                            </a>
+                                        {% endif %}
+                                        </div><!-- End .product-nav -->
+
+                                    </div><!-- End .details-filter-row -->
+                                    </div><!-- End .details-filter-row -->
+
+                                    <div class="product-details-action">
+                                        <a href="{{ product.Buy_link }}" class="btn-product btn-cart"><span>Buy</span></a></a>
+                                        <div>
+                                    </div><!-- End .product-details-footer -->
+                                </div><!-- End .product-details -->
+                                <div class="social-icons social-icons-sm">
+                                <div class="rating-star">
+                                &nbsp;
+								<span>
+									<i class="fa fa-star{% if product.ratings == 0.5 %}-half-o{% elif product.ratings < 1 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if product.ratings == 1.5 %}-half-o{% elif product.ratings < 2 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if product.ratings == 2.5 %}-half-o{% elif product.ratings < 3 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if product.ratings == 3.5 %}-half-o{% elif product.ratings < 4 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if product.ratings == 4.5 %}-half-o{% elif product.ratings < 5 %}-o {% endif %}" aria-hidden="true"></i>
+								</span>
+							</div>&nbsp;&nbsp;
+                                </div>
+                                <div>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        {% include 'like.html' %}
+                                        <p style="text-indent:79px;">{{ product.total_likes }}</p>
+                                        <hr/>
+
+                                </div>
+                            </div><!-- End .col-md-6 -->
+                        </div><!-- End .row -->
+                    </div><!-- End .product-details-top -->
+
+                    <div class="product-details-tab">
+                        <ul class="nav nav-pills justify-content-center" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="product-desc-link" data-toggle="tab" href="#product-desc-tab" role="tab" aria-controls="product-desc-tab" aria-selected="true">Description</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab" role="tab" aria-controls="product-info-tab" aria-selected="false">Additional information</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="product-shipping-link" data-toggle="tab" href="#product-shipping-tab" role="tab" aria-controls="product-shipping-tab" aria-selected="false">Features</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="product-review-link" data-toggle="tab" href="#product-review-tab" role="tab" aria-controls="product-review-tab" aria-selected="false">Comments</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="product-desc-tab" role="tabpanel" aria-labelledby="product-desc-link">
+                                <div class="product-desc-content">
+                                    <h3>{{ product.Description1title }}</h3>
+                                    <p style="color:black;">{{ product.Description1 }}</p>
+                                </div><!-- End .product-desc-content -->
+                                <br>
+                                <div class="product-desc-content">
+                                    <h3>{{ product.Description2title }}</h3>
+                                    <p style="color:black;">{{ product.Description2 }}</p>
+                                </div><!-- End .product-desc-content -->
+                            </div><!-- .End .tab-pane -->
+                            <div class="tab-pane fade" id="product-info-tab" role="tabpanel" aria-labelledby="product-info-link">
+                                <div class="product-desc-content">
+                                    <h3>{{ product.Description3title }}</h3>
+                                    <p style="color:black;">{{ product.Description3 }}</p>
+                                    <br>
+                                    <div class="product-desc-content">
+                                    <h3>{{ product.Description4title }}</h3>
+                                    <p style="color:black;">{{ product.Description4 }}</p>
+                                </div><!-- End .product-desc-content -->
+                                </div><!-- End .product-desc-content -->
+                            </div><!-- .End .tab-pane -->
+                            <div class="tab-pane fade" id="product-shipping-tab" role="tabpanel" aria-labelledby="product-shipping-link">
+                                <div class="product-desc-content">
+                                <table style="color:black;">
+  <tr>
+    <th>Details</th>
+    <th>Specifications</th>
+  </tr>
+  <tr>
+    <td>Brand</td>
+    <td>{{product.Brand}}</td>
+  </tr>
+  <tr>
+    <td>Colour</td>
+    <td>{{ product.Colour }}</td>
+  </tr>
+  <tr>
+    <td>Memory</td>
+    <td>{{ product.Memory }}</td>
+  </tr>
+  <tr>
+    <td>Cellular technology</td>
+    <td>{{ product.cellular_technology }}</td>
+  </tr>
+  <tr>
+    <td>Included items</td>
+    <td>{{ product.Included_items }}</td>
+  </tr>
+  <tr>
+    <td>Camera quality</td>
+    <td>{{ product.Camera_quality }}</td>
+  </tr>
+  <tr>
+    <td>Model</td>
+    <td>{{ product.Model }}</td>
+  </tr>
+  <tr>
+    <td>Screen</td>
+    <td>{{ product.screensize }}</td>
+  </tr>
+  <tr>
+    <td>RAM</td>
+    <td>{{ product.RAM }}</td>
+  </tr>
+  <tr>
+    <td>ROM</td>
+    <td>{{ product.ROM }}</td>
+  </tr>
+  <tr>
+    <td>Resolution</td>
+    <td>{{ product.Resolution }}</td>
+  </tr>
+  <tr>
+    <td>Display</td>
+    <td>{{ product.displaytype }}</td>
+  </tr>
+  <tr>
+    <td>Genre</td>
+    <td>{{ product.Genre }}</td>
+  </tr>
+  <tr>
+    <td>Mode</td>
+    <td>{{ product.Mode }}</td>
+  </tr>
+  <tr>
+    <td>Bluetooth Connectivity</td>
+    <td>{{ product.Bluetoothconnectivity }}</td>
+  </tr>
+  <tr>
+    <td>Water Resistance </td>
+    <td>{{ product.waterresistance }}</td>
+  </tr>
+  <tr>
+    <td>Connectivity</td>
+    <td>{{ product.connectivitytype }}</td>
+  </tr>
+  <tr>
+    <td>Storage</td>
+    <td>{{ product.storage }}</td>
+  </tr>
+  <tr>
+    <td>Zoom</td>
+    <td>{{ product.Zoom }}</td>
+  </tr>
+  <tr>
+    <td>Graphics</td>
+    <td>{{ product.Graphicscoprocessor }}</td>
+  </tr>
+  <tr>
+    <td>Battery Life</td>
+    <td>{{ product.Batterylife }}</td>
+  </tr>
+  <tr>
+    <td>Compatible Devices</td>
+    <td>{{ product.compatibledevices }}</td>
+  </tr>
+  <tr>
+    <td>Refresh Rate</td>
+    <td>{{ product.Refreshrate }}</td>
+  </tr>
+  <tr>
+    <td>Supported Internet Services</td>
+    <td>{{ product.Supportedinternetservices}}</td>
+  </tr>
+  <tr>
+    <td>Specialfeatures</td>
+    <td>{{ product.Specialfeatures }}</td>
+  </tr>
+  <tr>
+    <td>Series</td>
+    <td>{{ product.series }}</td>
+  </tr>
+</table>
+</div><!-- End .product-desc-content -->
+</div><!-- .End .tab-pane -->
+<div class="tab-pane fade" id="product-review-tab" role="tabpanel" aria-labelledby="product-review-link">
+ <div class="reviews">
+ <div class="container mt-5">
+    <div class="d-flex justify-content-center row">
+        <div class="col-md-8">
+            <div class="d-flex flex-column comment-section">
+            {% if product.comments %}
+            {% for comment in product.comments.all %}
+                <div class="bg-white p-2">
+                    <div class="d-flex flex-row user-info"><img class="rounded-circle" src="{{ comment.user.profile_image.url }}" width="40">
+                        <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">{{ comment.user.username }}</span><span class="date text-black-50">{{ comment.date|date:"F, jS, Y" }}</span></div>
+                    </div>
+                    <div class="mt-2">
+                        <p class="comment-text">{{ comment.comment }}</p>
+                    </div>
+                </div>
+                <div>
+            <p>---------------------------------------------------------------</p>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+                <div class="bg-light p-2">
+                <form method='POST'>
+                {% csrf_token %}
+                    <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="{{ request.user.profile_image.url }}" width="40">&nbsp;&nbsp;&nbsp;{{ form }}</div><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-primary btn-block" type='submit'>Post comment</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div><!-- End .tab-content -->
+</div><!-- End .product-details-tab -->
+</div>
+</div>
+<br>
+<h2 class="title text-center mb-4">You May Also Like</h2><!-- End .title text-center -->
+
+                    <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                        data-owl-options='{
+                            "nav": false,
+                            "dots": true,
+                            "margin": 20,
+                            "loop": false,
+                            "responsive": {
+                                "0": {
+                                    "items":1
+                                },
+                                "480": {
+                                    "items":2
+                                },
+                                "768": {
+                                    "items":3
+                                },
+                                "992": {
+                                    "items":4
+                                },
+                                "1200": {
+                                    "items":4,
+                                    "nav": true,
+                                    "dots": false
+                                }
+                            }
+                        }'>
+                        {% for prod in pro %}
+                        <div class="product product-7 text-center" style="width:500px; height:380px; border-radius:25px; border-color:red;">
+                            <figure class="product-media">
+                                <a href="{{ prod.get_absolute_url }}">
+                                    <img src="{{ prod.Image1.url }}" alt="Product image" class="product-image" style="width:300px; height:200px;">
+                                </a>
+
+
+                            </figure><!-- End .product-media -->
+
+                            <div class="product-body" style='border-color:red;'>
+                                <div class="product-cat">
+                                    <a href="#">{{ prod.choice }}</a>
+                                </div><!-- End .product-cat -->
+                                <h3 class="product-title"><a href="">{{ prod.Title }}</a></h3><!-- End .product-title -->
+                                <div class="product-price">
+                                    {{ prod.After_price }}
+                                </div><!-- End .product-price -->
+                                <div class="rating-star">
+								<span>
+									<i class="fa fa-star{% if prod.ratings == 0.5 %}-half-o{% elif prod.ratings < 1 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if prod.ratings == 1.5 %}-half-o{% elif prod.ratings < 2 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if prod.ratings == 2.5 %}-half-o{% elif prod.ratings < 3 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if prod.ratings == 3.5 %}-half-o{% elif prod.ratings < 4 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if prod.ratings == 4.5 %}-half-o{% elif prod.ratings < 5 %}-o {% endif %}" aria-hidden="true"></i>
+								</span>
+							</div>
+                            </div><!-- End .product-body -->
+                        </div><!-- End .product -->
+                        {% endfor %}
+                    </div><!-- End .owl-carousel -->
+                </div><!-- End .container -->
+            </div><!-- End .page-content -->
+        </main><!-- End .main -->
+    {% include 'footer.html' %}
+    </div><!-- End .page-wrapper -->
+    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+
+
+    {% include 'mobnav.html' %}
+    <!-- Plugins JS File -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.hoverIntent.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/superfish.min.js' %}"></script>
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap-input-spinner.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.elevateZoom.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap-input-spinner.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+    <!-- Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+
+<!-- molla/product.html  22 Nov 2019 09:55:05 GMT -->
+</html>

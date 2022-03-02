@@ -1,0 +1,67 @@
+{% load static %}
+<footer class="footer">
+            <div class="cta bg-image bg-dark pt-4 pb-5 mb-0" style="background-image: url({% static  'kumi.jpg' %});">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-10 col-md-8 col-lg-6">
+                            <div class="cta-heading text-center">
+                                <h1 class="cta-title text-white">Best listed products</h1><!-- End .cta-title -->
+                                <p class="cta-desc text-white">from various shopping sites</p><!-- End .cta-desc -->
+                            </div><!-- End .text-center -->
+                        </div><!-- End .col-sm-10 col-md-8 col-lg-6 -->
+                    </div><!-- End .row -->
+                </div><!-- End .container -->
+            </div><!-- End .cta -->
+        	<div class="footer-middle">
+	            <div class="container">
+	            	<div class="row">
+	            		<div class="col-sm-6 col-lg-3">
+	            			<div class="widget widget-about">
+	            				<img src="{% static 'assets/images/icons/nn.png' %}" class="footer-logo" alt="Footer Logo" width="105" height="25">
+	            				<p>Please see our affiliate disclosure before buying any product.</p>
+
+	            				<div class="widget">
+                                    Got Question? Contact us: cdtssj0032@gmail.com</a>
+                                </div><!-- End .widget-call -->
+	            			</div><!-- End .widget about-widget -->
+	            		</div><!-- End .col-sm-6 col-lg-3 -->
+
+	            		<div class="col-sm-6 col-lg-3">
+	            			<div class="widget">
+	            				<h4 class="widget-title">useful links</h4><!-- End .widget-title -->
+
+	            				<ul class="widget-list">
+	            					<li><a href="{% url 'about us' %}">About us</a></li>
+	            					<li><a href="{% url 'contactus' %}">Contact us</a></li>
+	            				</ul><!-- End .widget-list -->
+	            			</div><!-- End .widget -->
+	            		</div><!-- End .col-sm-6 col-lg-3 -->
+
+	            		<div class="col-sm-6 col-lg-3">
+	            			<div class="widget">
+	            			<h4 class="widget-title">Other links</h4><!-- End .widget-title -->
+
+	            				<ul class="widget-list">
+	            					<li><a href="{% url 'privacypolicy' %}">Privacy Policy</a></li>
+                                    <li><a href="{% url 'affiliate disclosure' %}">Affiliate Disclosure</a></li>
+	            				</ul><!-- End .widget-list -->
+	            			</div><!-- End .widget -->
+	            		</div><!-- End .col-sm-6 col-lg-3 -->
+
+	            		<div class="col-sm-6 col-lg-3">
+	            			<div class="widget">
+	            			{% if not request.user.is_authenticated %}
+	            				<h4 class="widget-title">My Account</h4><!-- End .widget-title -->
+
+	            				<ul class="widget-list">
+
+	            					<li><a href="{% url 'profile' %}">Sign Up</a></li>
+                                    <li><a href="{% url 'login' %}">Login</a></li>
+                                {% endif %}
+	            				</ul><!-- End .widget-list -->
+	            			</div><!-- End .widget -->
+	            		</div><!-- End .col-sm-6 col-lg-3 -->
+	            	</div><!-- End .row -->
+	            </div><!-- End .container -->
+	        </div><!-- End .footer-middle -->
+        </footer><!-- End .footer -->

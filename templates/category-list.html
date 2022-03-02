@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- molla/category-4cols.html  22 Nov 2019 10:02:52 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cheaptechguys</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Molla - Bootstrap eCommerce Template">
+    <meta name="author" content="p-themes">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/images/icons/nn.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/icons/nn.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/icons/nn.png' %}">
+    <link rel="manifest" href="{% static 'assets/images/icons/site.html' %}">
+    <link rel="mask-icon" href="{% static 'assets/images/icons/safari-pinned-tab.svg' %}" color="#666666">
+    <link rel="shortcut icon" href="{% static 'assets/images/icons/nn.png' %}">
+    <meta name="apple-mobile-web-app-title" content="Molla">
+    <meta name="application-name" content="Molla">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="msapplication-config" content="{% static 'assets/images/icons/browserconfig.xml' %}">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl-carousel/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/magnific-popup/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider/nouislider.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+        <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
+</head>
+<style>
+/* Pagination links */
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+/* Style the active/current link */
+.pagination a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+/* Add a grey background color on mouse-over */
+.pagination a:hover:not(.active) {background-color: #ddd;}
+</style>
+<body>
+    <div class="page-wrapper">
+        {% include 'navbar.html' %}
+        <main class="main">
+        	<div class="page-header text-center" style="background-image: url({% static 'll.jpg' %})">
+        		<div class="container">
+        			<h1 class="page-title">Category<span><h1  style="color:black;">{{ choice|title }}</h1></span></h1>
+        		</div><!-- End .container -->
+        	</div><!-- End .page-header -->
+            <div class="container mt-5 mb-5">
+            <div class="d-flex justify-content-center row">
+        {% for product in Products %}
+        <div class="col-md-10">
+            <div class="row p-2 bg-white border rounded">
+                <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="{{ product.Image1.url }}"></div>
+                <div class="col-md-6 mt-1">
+                    <h5>{{ product.Title }}</h5>
+                    <div class="mt-1 mb-1 spec-1"><span></span><span class="dot"></span><span>{{ product.Colour }}</span><span class="dot"></span><span>{{ product.Brand }}<br></span></div>
+                    <div class="mt-1 mb-1 spec-1"><span>{{ product.Dateofpublished|date:"F, jS, Y" }}</span><span class="dot"></span><span>{{ product.Buy_link }}</span><span>
+                    <br></span></div>
+                    <p class="text-justify text-truncate para mb-0">{{ product.Description1|truncatechars:16 }}<br><br></p>
+                </div>
+                <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                    <div class="d-flex flex-row align-items-center">
+                        <h4 class="mr-1">{{ product.After_price }}</h4><span class="strike-text">{{ product.Before_price }}</span>
+                    </div>
+                    <h6 class="text-success">Discount=({{ product.discount }}%)</h6>
+                    <div class="d-flex flex-column mt-4"><a href="{{ product.get_absolute_url }}"><button class="btn btn-primary btn-sm mt-2" type="button">Details</button></a><a href="{{ product.Buy_link }}"><button class="btn btn-outline-primary btn-sm mt-2" type="button">Buy</button></a></div>
+                </div>
+            </div>
+        </div>
+{% endfor %}
+</div>
+<div class="pagination">
+  {% if Products.has_previous %}
+    <a href="?page={{Products.previous_page_number}}">&laquo;</a>
+  {% endif %}
+  <a class="active" href="#">{{ Products.number }}</a>
+  {% if Products.has_next %}
+    <a href="?page={{Products.next_page_number}}">&raquo;</a>
+  {% endif %}
+  </ul>
+</nav>
+    </div>
+
+
+        </main><!-- End .main -->
+        {% include 'footer.html' %}
+    </div><!-- End .page-wrapper -->
+    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+    {% include 'mobnav.html' %}
+    <!-- Plugins JS File -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.hoverIntent.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/superfish.min.js' %}"></script>
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/js/wNumb.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap-input-spinner.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'assets/js/nouislider.min.js' %}"></script>
+    <!-- Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+
+
+<!-- molla/category-4cols.html  22 Nov 2019 10:02:55 GMT -->
+</html>

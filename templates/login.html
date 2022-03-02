@@ -1,0 +1,273 @@
+{% load crispy_forms_filters %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cheaptechguys</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="{% static 'nn.png' %}"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+/*-- Signup form CSS --*/
+form.Signup {
+    border: 1px solid #ddd;
+    padding: 0px 20px;
+    margin: 50px 0px;
+}
+.Signup a {
+    color: #9c27b0;
+}
+.Signup .btn {
+    width: 100%;
+    margin: 10px 0px;
+    font-size: 18px;
+    background-color: #9c27b0;
+    border: none;
+}
+label.term-policy {
+    font-weight: 500;
+    margin: 10px 0px 0px;
+}
+.Signup .choose-icon {
+    float: right;
+    margin-top: -38px;
+    background-color: #f5f5f5;
+    padding: 7px 15px;
+    height: 38px;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    border: 1px solid #ccc;
+    position: relative;
+    z-index: 999;
+}
+.Signup #Profile-pic {
+    padding-left: 3px;
+    padding-top: 3px;
+}
+.Signup h3 {
+    margin: 20px 0px 30px;
+    padding: 0px 0px 25px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+     color: #9c27b0;
+}
+p.not-yet {
+    text-align: center;
+}
+</style>
+<style>
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: arial;
+}
+hr{
+    border: 1px solid #eaeaea;
+    margin: 20px 0px
+}
+button:hover{
+    opacity: 0.9;
+}
+.login-page {
+    border: 1px solid #ddd;
+    width: 500px;
+    margin: 20px auto;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+.login-form{
+    padding: 30px 40px;
+}
+.login-form h2 {
+    text-align: center;
+    font-size: 28px;
+    margin: 0px 0px 30px;
+    color: #777;
+}
+.login-form input {
+    width: 100%;
+    margin-bottom: 13px;
+    height: 44px;
+    border: 1px solid #00BCD4;
+    padding: 0px 45px;
+    font-size: 15px;
+    border-radius: 4px;
+}
+.form-box {
+    position: relative;
+}
+.login-form form i {
+    position: absolute;
+    top: 11px;
+    font-size: 20px;
+    left: 15px;
+    color: #b1b1b1;
+}
+.remember {
+    color: #b1b1b1;
+    font-size: 15px;
+}
+.remember input {
+    height: auto;
+    width: auto;
+}
+.forgot-pwd {
+    float: right;
+    text-decoration: none;
+    color: #FF5722;
+    font-size: 15px;
+}
+.submit-btn {
+    border: none;
+    background-color: #4caf50;
+    color: #fff;
+    border-radius: 4px;
+    padding: 8px 20px;
+    margin: 20px auto 0px;
+    display: table;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+.social-login {
+    background-color: #fff;
+    padding: 20px 40px;
+}
+.social-login h3 {
+    text-align: center;
+    font-size: 24px;
+    margin: 0px 0px 30px;
+    color: #777;
+}
+.social-login h3 span {
+    font-size: 16px;
+    font-weight: normal;
+}
+.social-btn button {
+    width: 32.333%;
+    border: none;
+    padding: 10px 10px;
+    color: #fff;
+    font-size: 17px;
+    border-radius: 4px;
+    position: relative;
+}
+.twitter-btn {
+    background-color:#20aae8;
+}
+.facebook-btn{
+    background-color:#3a5898;
+}
+.google-btn {
+    background-color:#d44735;
+}
+
+.new-register p{
+    text-align: center;
+}
+.new-register p a {
+    text-decoration: none;
+    color: #FF5722;
+    font-weight: bold;
+}
+
+
+/*--Below CSS for small devices--*/
+@media (max-width: 767px){
+.login-page {
+    width: 90%;
+}
+.login-form{
+    padding: 20px 15px;
+}
+.remember {
+    font-size: 14px;
+}
+.forgot-pwd {
+    font-size: 14px;
+}
+.social-login h3 span {
+    font-size: 14px;
+}
+.social-btn button {
+    width: 100%;
+    margin: 5px 0px;
+}
+.social-login h3 {
+    margin: 0px 0px 15px;
+}
+}
+</style>
+<body>
+{% include 'navbar.html' %}
+  <div class="container">
+      {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>{{ message }}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+{% endif %}
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <!-- Sign Up form -->
+        <form method="POST" action="" class="Signup">
+        {% csrf_token %}
+        <h3>Log in Now!!!</h3>
+           <div class="form-group">
+              <label for="email">Email</label>
+            <input type="text" class="form-control" placeholder="Enter Email" name="email" required>
+          </div>
+          <div class="form-group">
+              <label for="psw">Password</label>
+            <input type="password" class="form-control" placeholder="Enter Password" name="password" required>
+          </div>
+          <button type="submit" class="btn btn-success" action='login'>Login</button>
+          <!--<h5 style="text-align: center;">or login with</h5>
+          <div class="social-login">
+        <div class="social-btn">
+           <button type="button" class="twitter-btn"><i class="fab fa-twitter-square"></i> Twitter</button>
+           <button type="button" class="linkedin-btn"><i class="fab fa-facebook-square"></i> Facebook</button>
+           <button type="button" class="google-btn"><i class="fab fa-google-plus-square"></i> Google+</button>
+        </div>-->
+          <hr>
+          <div class="form-group">
+            <p class="not-yet">Don't have an account? <a href="{% url 'profile' %}">Register</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% include 'footer.html' %}
+    {% include 'mobnav.html' %}
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.hoverIntent.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/superfish.min.js' %}"></script>
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap-input-spinner.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.plugin.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
+    <!-- Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/demos/demo-4.js' %}"></script>
+</body>
+</html>
+
+
+
+
+
+
+
